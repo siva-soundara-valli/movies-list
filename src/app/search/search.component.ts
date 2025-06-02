@@ -17,7 +17,7 @@ movies: any[] = [];
 
 constructor(private fb: FormBuilder, private sharedService: SharedService) {
   this.searchMoviesForm = this.fb.group({
-    searchQuery: [''], 
+    searchTerm: [''], 
   });
 }
 ngOnInit() : void {
