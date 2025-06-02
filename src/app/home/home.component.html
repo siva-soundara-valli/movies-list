@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <!-- <mat-card>
+        <mat-card-header>
+          <mat-card-title>Movies List</mat-card-title>
+          <mat-card-subtitle>List of movies with their details</mat-card-subtitle>
+          </mat-card-header>
+
+        <mat-card-content>
+        </mat-card-content>
+        </mat-card> -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Movies List</h3>
+            <!-- <app-search></app-search> -->
+        </div>
+        <div class="card-body" *ngFor="let a of visibleMovies" >
+            <div class="row text-center">
+                <div class="col-md-12 center">
+                <h3 class="title">{{a.title}}</h3>
+
+                <img [src]="a?.info?.image_url" alt="{{a.title}}" class="img-fluid">
+                </div>
+                <div class="col-md-9 center">
+                <p *ngFor="let d of a?.info?.directors"><strong >Director:</strong> {{d}}</p>
+                <p> {{a?.info?.plot}}</p>
+                <!-- <p><strong>Description:</strong> {{a.description}}</p> -->
+                </div>
+                
+            </div>
+            <hr>
+        </div>
+          <div class="row">
+            <div class="
+        col-md-12 center">
+              
+     <button class="load-more-btn center" (click)="loadMore()">Load More</button>
+</div>
+      
+    </div>
+</div>

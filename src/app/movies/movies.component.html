@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>Movies List</h3>
+        </div>
+        <div class="card-body">
+          <div *ngFor="let movie of movies" class="movie-item">
+            <h3 class="title">{{ movie.title }}</h3>
+            <img [src]="movie?.info?.image_url" alt="{{ movie.title }}" class="img-fluid" />
+            <p *ngFor="let director of movie?.info?.directors"><strong>Director:</strong> {{ director }}</p>
+            <!-- <p><strong>Release Date:</strong> {{ movie.releaseDate | date }}</p> -->
+            <p><strong>Description:</strong> {{ movie?.info?.plot }}</p>
+            <hr />
+          </div>
+        </div>
+      </div>
