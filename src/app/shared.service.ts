@@ -103513,5 +103513,8 @@ export class SharedService {
   getMovies(){
     return this.movies;
   }
+ getMoviess(): Observable<{ title: string }[]> {
+  return of(this.movies);
+}
 }
 

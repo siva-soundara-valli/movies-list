@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SharedService } from '../shared.service';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-movies',
   standalone: true,
@@ -10,7 +10,11 @@ import { SharedService } from '../shared.service';
   styleUrl: './movies.component.css'
 })
 export class MoviesComponent {
-  constructor(private sharedService: SharedService) { }
-  movies = this.sharedService.getMovies();
-  
+  constructor(private sharedService: SharedService, private route : ActivatedRoute) { }
+ ngOnInit(): void {
+    const title = this.route.snapshot.paramMap.get('title');
+    const allMovies = this.sharedService.getMovies(); 
+    this.movie = allMovies.find(m => m.title == title);
+  }  
+  movie: any; 
 }

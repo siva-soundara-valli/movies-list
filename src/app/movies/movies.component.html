@@ -2,17 +2,43 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
-          <h3>Movies List</h3>
+        <div class="card-header text-center">
+          <h3>{{ movie?.title }}</h3>
         </div>
         <div class="card-body">
-          <div *ngFor="let movie of movies" class="movie-item">
-            <h3 class="title">{{ movie.title }}</h3>
-            <img [src]="movie?.info?.image_url" alt="{{ movie.title }}" class="img-fluid" />
-            <p *ngFor="let director of movie?.info?.directors"><strong>Director:</strong> {{ director }}</p>
-            <!-- <p><strong>Release Date:</strong> {{ movie.releaseDate | date }}</p> -->
-            <p><strong>Description:</strong> {{ movie?.info?.plot }}</p>
-            <hr />
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img
+                [src]="movie?.info?.image_url"
+                alt="{{ movie?.title }}"
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-md-8 mt-4">
+              <p><strong>Year:</strong> {{ movie?.year }}</p>
+              <p *ngIf="movie?.info?.directors?.length">
+                <strong>Director:</strong>
+                {{ movie?.info?.directors.join(', ') }}
+              </p>
+              <p><strong>Release Date:</strong> {{ movie?.info?.release_date }}</p>
+              <p><strong>Rating:</strong> {{ movie?.info?.rating }}</p>
+              <p *ngIf="movie?.info?.genres?.length">
+                <strong>Genres:</strong>
+                {{ movie?.info?.genres.join(', ') }}
+              </p>
+              <p><strong>Description:</strong> {{ movie?.info?.plot }}</p>
+              <p><strong>Rank:</strong> {{ movie?.info?.rank }}</p>
+              <p><strong>Running Time (Secs):</strong> {{ movie?.info?.running_time_secs }}</p>
+              <p *ngIf="movie?.info?.actors?.length">
+                <strong>Actors:</strong>
+                <span *ngFor="let actor of movie?.info?.actors; let isLast = last">
+                  {{ actor }}<span *ngIf="!isLast">, </span>
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>

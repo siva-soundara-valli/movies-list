@@ -1,23 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 text-center">
 <form [formGroup]="searchMoviesForm" (ngSubmit)="onSearch()">
-  <div class="form-group">
-    <label for="searchTerm">Search Movies</label>
+  <div class="form-group position-relative">
     <input
       type="text"
       id="searchTerm"
       formControlName="searchTerm"
-      class="form-control"
+      class="form-control pl-4"
       placeholder="Enter movie title"
     />
-    </div>
-  </form>
+    <mat-icon class="search-icon">search</mat-icon>
+  </div>
+</form>
 
+</div>
+    </div>
+    <div class="row" *ngIf="movies && movies.length > 0">
+        <div class="col-md-12">
   <div class="card">
     <div class="card-header">
       <h3>Movies List</h3>
     </div>
     <div class="card-body">
       <div *ngFor="let movie of movies" class="movie-item">
-        <h3 class="title">{{ movie.title }}</h3>
+        <h3 class="title pointer"  (click)="goTo('movies', movie?.title)">{{ movie.title }}</h3>
         </div>
     </div>
     </div>
+        </div>
+</div>
